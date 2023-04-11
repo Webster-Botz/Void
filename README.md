@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://github.com/Webster-Botz/-3rinity-MD">
-    <img src="https://i.imgur.com/MClOeqe.jpeg">
+    <img src="https://www.peakpx.com/en/hd-wallpaper-desktop-enlhc">
   </a>
 
 <h1 align="center"> 🧣3rinity MD
