@@ -1,0 +1,52 @@
+const getRegisteredRandomId = () => {
+    return _registered[Math.floor(Math.random() * _registered.length)].id
+  }
+  const addRegisteredUser = (userid, sender, age, time, serial) => {
+    const obj = {
+  id: userid,
+  name: sender,
+  age: age,
+  time: time,
+  serial: serial
+    }
+    _registered.push(obj)
+    fs.writeFileSync('./database/registered.json', JSON.stringify(_registered))
+  }
+  const createSerial = (size) => {
+    return crypto.randomBytes(size).toString('hex').slice(0, size)
+
+  }
+
+  const checkRegisteredUser = (sender) => {
+    let status = false    
+    Object.keys(_registered).forEach((i) => {
+  if (_registered[i].id === sender) {
+    status = true
+  }
+    })
+    return status
+  }
+
+const _registered = JSON.parse(fs.readFileSync('./database/registered.json'))
+let register = JSON.parse(fs.readFileSync('./database/registered.json'))       
+   const isRegister = register.includes(sender)
+
+const isRegistered = checkRegisteredUser(sender)
+
+/// SERIAL
+          /*
+const namaUser = `${pushname}`
+const umurUser = `${sender}`
+const serial = createSerial(20)
+*/
+
+//FUNCTION
+    function clockString(ms) {
+      let h = isNaN(ms) ? "--" : Math.floor(ms / 3600000);
+      let m = isNaN(ms) ? "--" : Math.floor(ms / 60000) % 60;
+      let s = isNaN(ms) ? "--" : Math.floor(ms / 1000) % 60;
+      return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(":");
+    }
+
+
+
