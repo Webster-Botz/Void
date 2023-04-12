@@ -4,7 +4,7 @@ const  mk = require('@hapi/boom')
 
 const CFonts = require('cfonts')
 
-const { color } = require('./lib')
+const { color } = require('./lib/color')
 
 const qrcode = require('qrcode-terminal');
 
@@ -50,7 +50,7 @@ console.log(color('[WEBSTER]'), color('3rinity Bot is now online!', 'yellow'))
 
 
 
-    console.log(color('[DEV]', 'cyan'), color('Welcome back, Owner! Hope you are doing well~', 'magenta')
+    console.log(color('[DEV]', 'cyan'), color('Welcome back, Owner! Hope you are doing well~', 'magenta'))
 
 
 
@@ -194,5 +194,6 @@ connectToWhatsApp()
 
 
 })
+
 
 

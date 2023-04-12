@@ -1,20 +1,37 @@
 {
-  "name": "master-bot",
+  "name": "-3rinity-md",
   "version": "1.0.0",
-  "description": "The Best Assitant On WhatsApp ",
+  "description": "Fully developed bot by lexis",
   "main": "start.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  "start": "node start.js",
+    "start": "node start.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Webster-Botz/"
+    "url": "git+https://github.com/Webster-Botz/-3rinity-MD.git"
   },
-  "keywords": [
-    "webster",
-    "bot"
-  ],
   "author": "lexis",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Webster-Botz/-3rinity-MD/issues"
+  },
+  "homepage": "https://github.com/Webster-Botz/-3rinity-MD#readme",
+  "dependencies": {
+    "@adiwajshing/baileys": "^5.0.0",
+    "@hapi/boom": "^10.0.1",
+    "axios": "^1.3.5",
+    "cfonts": "^3.1.1",
+    "child_process": "^1.0.2",
+    "crypto": "^1.0.1",
+    "fs": "^0.0.1-security",
+    "pino": "^8.11.0",
+    "qrcode-terminal": "^0.12.0",
+    "quick.db": "^9.1.4",
+    "ytdl-core": "^4.11.3",
+    "ytsearch": "^1.0.4"
+  }
 }
+
