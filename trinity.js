@@ -26,36 +26,13 @@ module.exports = bot1 = async(bot, m, msg, mek, store) => {
     const db = new QuickDB(); // will make a json.sqlite in the root folder
     const tb = db
     const gp = tb
+    const mek = msg
 //=================================================//
-    
-    
-const mek = msg
 
 
 
 //=================================================//
-const sotoy = [
-  '🍊 : 🍒 : 🍐',
-  '🍒 : 🔔 : 🍊',
-  '🍇 : 🍇 : 🍐',
-  '🍊 : 🍋 : 🔔', //ANKER
-  '🔔 : 🍒 : 🍐',
-  '🔔 : 🍒 : 🍊',
-  '🍊 : 🍋 : ??',        
-  '🍐 : 🍒 : 🍋',
-  '🍐 : 🍒 : 🍐',
-  '🍊 : 🍒 : 🍒',
-  '🔔 : 🔔 : 🍇',
-  '🍌 : 🍇 : 🔔',
-  '🍐 : 🔔 : 🔔',
-  '🍊 : 🍋 : 🍒',
-  '🍋 : 🍋 : 🍋 Win👑',
-  '🔔 : 🔔 : 🍇',
-  '🔔 : 🍇 : 🍇', 
-  '🔔 : 🍐 : 🔔',
-  '🍌 : 🍌 : 🍌 Win👑'
-  ]
- 
+
 //=================================================// 
  
  const cekUser = (users, id) => {     
@@ -193,13 +170,11 @@ bot.groupParticipantsUpdate(from, [sender], 'remove')
           }
 //=================================================//
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - //////////////////
-/*
 if (!isGroup && !isCmd){
-  const webreply = await axios.get(`http://api.brainshop.ai/get?bid=160318&key=YI5BtYzP7G9IE6F9&uid=[uid]&msg=[${budy}]`)
+  const webreply = await axios.get(`http://api.brainshop.ai/get?bid=160318&key=YI5BtYzP7G9IE6F9&uid=[uid]&msg=[${budy}]`) //Using bot Chat Api
   txt = `${webreply.data.cnt}`
   reply(txt)
   }
-*/
 //////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -268,7 +243,7 @@ bot.groupParticipantsUpdate(from, [sender], 'remove')
 
           
 //=================================================//
-          /// SERIAL
+
         
 //=================================================//
 
@@ -303,12 +278,10 @@ let jd = rn[Math.floor(Math.random() * rn.length)];
 
      switch (command){
 
-      case '3rinity':
-
-        if (!isGroup) return reply("This command can only be used in group!")
-        reply(`Hello I was Built By Lexis😎`)
-
+      case 'set-legion':
+if (!isOwner) return reply('_Only Botadmins_')
         break
+
          case 'gclimit':
     if (!isOwner) return reply('_Only Botadmins_')
         reply(`${groupName} Has:- ${memberlimit} Limit!`)
@@ -502,12 +475,149 @@ bot.groupParticipantsUpdate(from, [mentioned], 'remove')
 
         break;
 
+        case "remove":
+        case "error":
+        if (!isGroup) return reply('this feature is only for groups');
+        if (!isGroupAdmins) return reply('Only Admins are allowed to use this Cmd')
+        if (
+          mek.message.extendedTextMessage === undefined ||
+          mek.message.extendedTextMessage === null
+        )
+          return reply("Tag the target you want to kick!");
+        mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid;
+        if (mentioned.length > 1) {
+bot.groupParticipantsUpdate(from, [mentioned], 'remove')
+          reply('DONE!');
+        } else if (mentioned.length < 1) {
+          anu = mek.message.extendedTextMessage.contextInfo.participant;
+bot.groupParticipantsUpdate(from, [anu], 'remove');
+          reply('DONE!');
+        } else {
+bot.groupParticipantsUpdate(from, [mentioned], 'remove')
+          reply('DONE!');
+
+        }
+
+        break;
+
+        case 'promote': {
+              if (!isGroup) return reply('this feature is only for groups')
+              if (!isGroupAdmins) return reply('Only Admins are allowed to use this Cmd')
+              if(!isBotGroupAdmins) return reply('Bot Not Admin...')
+              if (
+      
+                mek.message.extendedTextMessage === undefined ||
+      
+                mek.message.extendedTextMessage === null
+      
+              )
+      
+                return reply("Tag the target you want to promote!");
+      
+              mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid;
+      
+              if (mentioned.length > 1) {
+      bot.groupParticipantsUpdate(from, [mentioned], 'promote')
+                //bot.groupRemove(from, mentioned);
+      
+                reply('DONE!');
+      
+              } else if (mentioned.length < 1) {
+      
+                anu = mek.message.extendedTextMessage.contextInfo.participant;
+      bot.groupParticipantsUpdate(from, [anu], 'promote');
+                //bot.groupRemove(from, [anu]);
+      
+                reply('DONE!');
+      
+              } else {
+      bot.groupParticipantsUpdate(from, [mentioned], 'promote');
+      
+                reply('DONE!');
+      
+              }
+        }
+      
+        break
+      
+        case 'pme': {
+              if (!isGroup) return reply('this feature is only for groups')
+              if (!isOwner) return reply('Only Legions can use.')
+              if(!isBotGroupAdmins) return reply('Bot Not Admin...')
+      bot.groupParticipantsUpdate(from, [sender], 'promote')
+      
+                reply('DONE!');
+            }
+        break
+      
+        case 'dme': {
+          if (!isGroup) return reply('this feature is only for groups')
+          if (!isOwner) return reply('Only Legions can use.')
+          if(!isBotGroupAdmins) return reply('Bot Not Admin...')
+      bot.groupParticipantsUpdate(from, [sender], 'demote')
+      
+            reply('DONE!');
+        }
+      break
+      
+        case 'demote': {
+              if (!isGroup) return reply('this feature is only for groups')
+              if (!isGroupAdmins) return reply('Only Admins are allowed to use this Cmd')
+              if(!isBotGroupAdmins) return reply('Bot Not Admin...')
+              if (
+      
+                mek.message.extendedTextMessage === undefined ||
+      
+                mek.message.extendedTextMessage === null
+      
+              )
+      
+                return reply("Tag the target you want to demote!");
+      
+              mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid;
+      
+              if (mentioned.length > 1) {
+      bot.groupParticipantsUpdate(from, [mentioned], 'demote')
+                //bot.groupRemove(from, mentioned);
+      
+                reply('DONE!');
+      
+              } else if (mentioned.length < 1) {
+      
+                anu = mek.message.extendedTextMessage.contextInfo.participant;
+      bot.groupParticipantsUpdate(from, [anu], 'demote');
+                //bot.groupRemove(from, [anu]);
+      
+                reply('DONE!');
+      
+              } else {
+      bot.groupParticipantsUpdate(from, [mentioned],'demote')
+                //bot.groupRemove(from, mentioned);
+      
+                reply('DONE!');
+      
+              }
+        }
+      
+        break
+      
+      
+      case 'add':{     			
+              if (!isGroup) return reply('this feature is only for groups')
+              if (!isGroupAdmins) return reply('Only Admins are allowed to use this Cmd')
+       let users = mek.quoted ? mek.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+       if (users.length == 0) return reply(`Please write the number of the person you want to add to this group`)
+        await bot.groupParticipantsUpdate(from, [users], 'add').then((res) => reply(`User Added Successfully!`)).catch((err) => reply(`Cannot add that user to this group!`))
+       }
+       break
+
         case 'opengc':
 
           case 'o':
 
        if (!isGroup) return reply('this feature is only for group')
          if (!isGroupAdmins) return reply('this feature is only for admins')
+         if(!isBotGroupAdmins) return reply('Bot Not Admin...')
 bot.groupSettingUpdate(from, 'not_announcement').then((res) => reply(`DONE!`)).catch((err) => reply(jsonformat(err)))
          break
 
@@ -516,8 +626,199 @@ bot.groupSettingUpdate(from, 'not_announcement').then((res) => reply(`DONE!`)).c
 
          if (!isGroup) return reply('this feature is only for group')
          if (!isGroupAdmins) return reply('this feature is only for admins')
+         if(!isBotGroupAdmins) return reply('Bot Not Admin...')
 bot.groupSettingUpdate(from, 'announcement').then((res) => reply(`DONE!`)).catch((err) => reply(jsonformat(err)))
        break
+
+       case 'me': case 'profile': case 'p':
+				if (!isGroup) return reply('this feature is only for groups')
+     
+
+     //var flob = await getBuffer(picak+'User Profile')
+     var bio= await bot.fetchStatus(sender)
+     var bioo = bio.status
+     const adn= isGroupAdmins? "True":"False"
+     const gender = await tb.get(`${sender}`.gender)
+     try {
+        
+        pfp=await bot.profilePictureUrl(sender, 'image')
+    
+          } catch (e) {
+     
+      pfp ='https://wallpapercave.com/wp/wp10524580.jpg'
+    }
+
+     const profilexx = `★ *Username* ★ : ${pushname}\n\n✥ *Gender* ✥ : *${gender}*\n\n✿ *User-Notice* ✿ : *${bioo}*\n\n✘ *Usage-Limit* ✘ : *Unlimited*\n\n⍟ *Group Admin Status* ⍟ : *${adn}*\n\n✿ *User-Tag* ✿ : @${sender.split("@")[0]}`
+            let buttonMessage = {
+                image: { url: pfp },
+                caption: profilexx,
+                headerType: 4
+            }
+        bot.sendMessage(from,buttonMessage,{quoted:mek})
+        	
+            break
+
+            case 'del':
+    case 'delete':
+      if(isGroup) {
+        if(!isGroupAdmins) return reply('Only admins are allowed to use this CMD')
+        if(!isBotGroupAdmins) return reply('Bot Not Admin...')
+        const key = {
+          remoteJid: from,
+          fromMe: false,
+          id: mek.quoted.id,
+          participant: mek.quoted.sender,
+        };
+        await bot.sendMessage(from, { delete: key });
+      }
+      break
+
+            case 'leave':
+if(isGroup) {
+if(!isOwner) return reply('_Only Botadmins_')
+                reply("Byeee...")
+                await bot.groupLeave(from).then((res) => reply(jsonformat(res))).catch((err) => reply("Error"))
+
+            }
+
+            break
+
+            case 'set-gcname':
+if(isGroup) {
+  if(!isGroupAdmins) return reply('Only admins are allowed to use this CMD')
+  if(!isBotGroupAdmins) return reply('Bot Not Admin...')
+  if (!args[0])
+        return reply(`Please provide a new group name !`);
+        var newGCName = args.join(" ");
+        var oldGCName = metadata.subject;
+
+    try {
+        ppgc = await bot.profilePictureUrl(from, "image");
+      } catch {
+        ppgc = "https://wallpapercave.com/wp/wp10524580.jpg";
+      }
+
+    await bot.groupUpdateSubject(from, newGCName).then((res) => bot.sendMessage(
+        from,
+        {
+          image: { url: ppgc, mimetype: "image/jpeg" },
+          caption: `*『 Group Name Changed 』*\n\n_🔶 Old Name:_\n*${oldGCName}*\n\n_🔷 New Name:_\n*${args.join(" ")}*`,
+        },
+        { quoted: mek }
+      )).catch((err) => replay(jsonformat(err)))
+}
+            break
+
+case 'gcinfo':
+  case 'groupinfo':
+    if(isGroup) {
+      try {
+        ppgc = await bot.profilePictureUrl(from, "image");
+      } catch {
+        ppgc = botImage1;
+      }
+      const participants = mek.isGroup ? await metadata.participants : ''
+      const groupAdmins = mek.isGroup ? await participants.filter(v => v.admin !== null).map(v => v.id) : ''
+      const groupOwner = mek.isGroup ? metadata.owner : ''
+      
+      desc = metadata.desc ? metadata.desc : 'No Description'
+
+      let txt = `*『 Group Info 』*\n\n_🎀 Group Name:_ *${metadata.subject}*\n\n_🧩 Group Description:_\n${desc}\n\n_👑 Group Owner:_ @${metadata.owner.split('@')[0]}\n_💫 Group Created on:_ *${moment(`${metadata.creation}` * 1000).tz('Asia/Kolkata').format('DD/MM/YYYY')}*\n_📛 Total Admins:_ *${groupAdmins.length}*\n_🎈 Total Participants:_ *${metadata.participants.length}*\n`;
+    
+
+      await bot.sendMessage(
+        from,
+    {
+      image: { url: ppgc, mimetype: "image/jpeg" },
+      caption: txt,
+      mentions: [metadata.owner]
+    },
+    { quoted: mek }
+  );
+    }
+    break
+
+    case 'set-desc':
+      if(isGroup) {
+        if(!isGroupAdmins) return reply('Only admins are allowed to use this CMD')
+        if(!isBotGroupAdmins) return reply('Bot Not Admin...')
+        if (!args[0])
+        return reply(`Please provide a new group description !`);
+    
+    var newGCdesc = args.join(" ");
+
+    try {
+        ppgc = await bot.profilePictureUrl(from, "image");
+      } catch {
+        ppgc = botImage2;
+      }
+
+    await bot.groupUpdateDescription(from, newGCdesc).then((res) => bot.sendMessage(
+        from,
+        {
+          image: { url: ppgc, mimetype: "image/jpeg" },
+          caption: `*『 Group Description Changed 』*\n\n_🧩 New Description:_\n*${args.join(" ")}*`,
+        },
+        { quoted: mek }
+      )).catch((err) => replay(jsonformat(err)))
+      }
+      break
+
+      case 'setgc-pp':
+        case 'set-gcpp':
+          case 'set-pp':
+            case 'setppgc':
+              if(isGroup) {
+                if(!isGroupAdmins) return reply('Only admins are allowed to use this CMD')
+                if(!isBotGroupAdmins) return reply('Bot Not Admin...')
+                if (!/image/.test(mime))
+                return bot.sendMessage(
+                  from,
+                  {
+                    text: `Send/Reply Image With Caption ${
+                      prefix + "setgcpp"
+                    } to change the Profile Pic of this group.`,
+                  },
+                  { quoted: mek }
+                );
+              if (/webp/.test(mime))
+                return bot.sendMessage(
+                  from,
+                  {
+                    text: `Send/Reply Image With Caption ${
+                      prefix + "setgcpp"
+                    } to change the Profile Pic of this group.`,
+                  },
+                  { quoted: mek }
+                );
+          
+                let quotedimage = await bot.downloadAndSaveMediaMessage(quoted)
+                var { preview } = await generatePP(quotedimage)   
+                
+                await bot.query({
+                  tag: 'iq',
+                  attrs: {
+                      to: from,
+                      type:'set',
+                      xmlns: 'w:profile:picture'
+                  },
+                  content: [{
+                      tag: 'picture',
+                      attrs: { type: 'image' },
+                      content: preview
+                  }]
+              })
+              fs.unlinkSync(quotedimage)
+          
+              ppgc = await bot.profilePictureUrl(from, "image");
+          
+              bot.sendMessage(
+                  from,
+                  { image: {url: ppgc},caption: `\nGroup Profile Picture has been updated Successfully by *${pushName}* !` },
+                  { quoted: mek }
+                )
+              }
+              break
 
        case 'tagall':
 case 'ping':
@@ -638,24 +939,202 @@ await bot.sendMessage(`2348149419403@s.whatsapp.net`, {text: `${txtmsg}`, mentio
 break 
 
 case 'act':
-
      if (!isGroup) return reply('this feature is only for groups')
      if (!isGroupAdmins) return reply('Only Admins are allowed to use this Cmd')
-            
-           const arg = body.trim().split(' ')
-           if (isGroup)  {
-            if (arg[1].toLowerCase() == 'cardgame') {
-              if(card > 10) return reply(`cardgame is already active on ${groupName}`)
-          henti3 = 12
-          await tb.set(`${from}.card`, henti3)
-          return reply(`cardgame is now registered on *${groupName}* `)
-          
-            }
-        }
+     if(!isBotGroupAdmins) return reply('Bot Not Admin...')  
+     if (arg[1].toLowerCase() == 'rule') {
+      if (antilink.includes(from)) return reply(`rule is already registered on *${groupName}*`)
+      antilink.push(from)
+       fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
+       return reply(`Rule is now registered on *${groupName}*`)
+}
+if (arg[1].toLowerCase() == 'antipig') {
+  if (antipig.includes(from)) return reply(`rule is already registered on *${groupName}*`)
+  antipig.push(from)
+   fs.writeFileSync('./database/antipig.json', JSON.stringify(antipig))
+   return reply(`Antipig is now registered on *${groupName}*`)
+}
                break
+
+                case 'deact':
+                  if (!isGroup) return reply('this feature is only for groups')
+                  if (!isGroupAdmins) return reply('Only Admins are allowed to use this Cmd')
+                  if(!isBotGroupAdmins) return reply('Bot Not Admin...') 
+                  if (arg[1].toLowerCase() == 'rule') {
+                    let inx = antilink.indexOf(from)
+                    antilink.splice(inx, 1)
+                    fs.writeFileSync('./database/antilink.json', JSON.stringify(antilink))
+                   
+                     return reply(`Rule is now unregistered on *${groupName}*`)
+                 }
+                 else if (arg[1].toLowerCase() == 'rule') {
+                  let inx = antipig.indexOf(from)
+                  antipig.splice(inx, 1)
+                  fs.writeFileSync('./database/antipig.json', JSON.stringify(antipig))
+                 
+                   return reply(`Antipig is now unregistered on *${groupName}*`)
+               }
+                  break
+
+case 'set-ban':
+  case 'set_user-add':
+    if(isOwner) return reply('_Only BotAdmins..._')
+    if (!text && !m.quoted) {
+      return bot.sendMessage( 
+        from, 
+        { text: `Please tag a user to *Ban*!` }, 
+        { quoted: mek } 
+      )}
+     
+      if(mek.quoted){
+        var mentionedUser = mek.quoted.sender;
+      }
+      else{
+        var mentionedUser = mentionByTag[0];
+      } 
+   let GroupName = metadata.subject
+let banreason = args.join(" ")
+
+if (mek.quoted && !args.join(" ")) {
+banreason = "No reason provided";
+}
+
+if (mek.quoted && args.join(" ")) {
+banreason = text;
+}
+
+if(banreason.includes("@")){
+banreason = args.join(" ")
+}
+
+
+if(banreason == undefined){
+banreason = "No reason provided";
+}
+    //var ownerlist = global.owner;
+
+    let userId = (await mentionedUser) || mek.msg.contextInfo.participant; 
+    try { 
+       mku.findOne({id:userId}).then(async (user) => {
+          if (!user) {
+            if (modStatus == "true" || ownerNumber.includes(`${mentionedUser.split("@")[0]}`)) return bot.sendMessage(from, { text: `@${mentionedUser.split("@")[0]} is a *Legion* and can't be banned !` , mentions: [mentionedUser]  }, { quoted: mek });
+            await mku.create({id:userId, ban: true, reason: banreason, gcname: GroupName });
+            return bot.sendMessage( 
+              from, 
+              { text: `@${mentionedUser.split("@")[0]} has been *Banned* Successfully by *${pushName}*\n\n *Reason*: ${banreason}`, mentions: [mentionedUser] }, 
+              { quoted: mek } 
+            );
+          }else{
+            if (modStatus == "true" || ownerNumber.includes(`${mentionedUser.split("@")[0]}`)) return bot.sendMessage(from, { text: `@${mentionedUser.split("@")[0]} is a *Legion* and can't be banned !` , mentions: [mentionedUser]  }, { quoted: mek });
+              if (user.ban == "true") return bot.sendMessage(from, { text: `@${mentionedUser.split("@")[0]} is already *Banned* !` , mentions: [mentionedUser]  }, { quoted: mek });
+              await mku.findOneAndUpdate({ id: userId }, { $set: { ban: true, reason: banreason, gcname: GroupName } }, { new: true });
+              return bot.sendMessage( 
+                from, 
+                { text: `@${mentionedUser.split("@")[0]} has been *Banned* Successfully by *${pushName}*\n\n *Reason*: ${banreason}` , mentions: [mentionedUser]}, 
+                { quoted: mek } 
+              );
+          }
+       }).catch(error => {
+         console.log(error)
+         return bot.sendMessage(from, { text: `An internal error occurred while banning the user.` }, { quoted: mek });
+       });
+    } catch (err) { 
+      console.log(err);
+      return bot.sendMessage(from, { text: `An internal error occurred while banning the user.` }, { quoted: mek });
+    } 
+  break
+
+  case 'del-ban':
+    case 'set_user-del':
+      if(isOwner) return reply('_Only BotAdmins..._')
+      if (!text && !m.quoted) {
+        return bot.sendMessage( 
+          from, 
+          { text: `Please tag a user to *Unban*!` }, 
+          { quoted: mek } 
+        )}
+        else if(mek.quoted){
+          var mentionedUser = mek.quoted.sender;
+        }
+        else{
+          var mentionedUser = mentionByTag[0];
+        }
+    
+    let userId = (await mentionedUser) || mek.msg.contextInfo.participant; 
+    try { 
+       mku.findOne({id:userId}).then(async (user) => {
+          if (!user) {
+            return bot.sendMessage( 
+              from, 
+              { text: `@${mentionedUser.split("@")[0]} is not *Banned* !` , mentions: [mentionedUser] }, 
+              { quoted: mek } 
+            );
+          }else{
+              if (user.ban == "false") return bot.sendMessage(from, { text: `@${mentionedUser.split("@")[0]} is not *Banned* !` , mentions: [mentionedUser]}, { quoted: mek });
+              await mku.findOneAndUpdate({ id: userId }, { ban: false }, { new: true });
+              return bot.sendMessage( 
+                from, 
+                { text: `@${mentionedUser.split("@")[0]} has been *Unbanned* Successfully! by *${pushName}*`, mentions: [mentionedUser] }, 
+                { quoted: mek } 
+              );
+          }
+       }).catch(error => {
+         console.log(error)
+         return bot.sendMessage(from, { text: `An internal error occurred while Unbanning the user.` }, { quoted: mek });
+       });
+    } catch (err) { 
+      console.log(err);
+      return bot.sendMessage(from, { text: `An internal error occurred while Unbanning the user.` }, { quoted: mek });
+    } 
+  break
+
+case 'banlist':
+  if(!isOwner) return reply('_Only BotAdmins_')
+  try { 
+        
+    var banlist = await mku.find({ban: true});
+    var banlistString = "";
+    banlist.forEach((ban, index) => {
+        banlistString += ban.id ? `\n ${index+1}\n╭─────────────◆\n│ *Name:* ${ban.name}\n│ *Tag:* @${ban.id.split("@")[0]}\n│ *Reason:* ${ban.reason}\n╰─────────────◆\n\n` : '';
+      });
+    var mention = banlist.map(ban => ban.id)
+    if(banlistString == "") banlistString = "No banned members found.";
+    return bot.sendMessage( 
+      from, 
+      { text: `Current banned members: ${banlistString}`, mentions: mention }, 
+      { quoted: mek } 
+    );
+  } catch (err) { 
+    console.log(err);
+    return bot.sendMessage(from, { text: `An internal error occurred while fetching the banned list.` }, { quoted: mek });
+  } 
+break
+
+case 'bangroup':
+  if(!isOwner) return reply('_Only BotAdmins_')
+  let checkdata = await mk.findOne({ id: from })
+    try {
+        if (!checkdata) {
+            await new mk({ id: from, bangroup: "true" }).save()
+            return reply(`*${groupName}* is now *Banned* from using *${global.botName}*`)
+        } else {
+            if (checkdata.bangroup == "true") return reply(`*${groupName}* is *Already Banned* from using *${global.botName}*`)
+            await mk.updateOne({ id: from }, { bangroup: "true" })
+            return reply(`*This Group Is Banned From Using Bot.*`)
+        }
+    } catch (err) {
+        console.log(err);
+        return bot.sendMessage(from, { text: `An internal error occurred while banning the user.` }, { quoted: mek });
+    }
+    break
+
+    case 'unbangc':
+      case 'unban-gc':
+
  case 'grouplink': case 'gclink': {
 				if (!isGroup) return reply('this feature is only for groups')
 				if (!isGroupAdmins) return reply('Only Admins are allowed to use this Cmd')
+        if(!isBotGroupAdmins) return reply('Bot Not Admin...')
  let response = await bot.groupInviteCode(from)
  bot.sendMessage(from, {text:`*Group Name:* *${groupMetadata.subject}* \n\n*Group Link :* \nhttps://chat.whatsapp.com/${response}l`, "contextInfo": {
  //mimetype: "image/jpeg",
@@ -685,6 +1164,7 @@ case 'act':
     case 'resetgruplink': {
 				if (!isGroup) return reply('this feature is only for groups')
 				if (!isGroupAdmins) return reply('Only Admins are allowed to use this Cmd')
+        if(!isBotGroupAdmins) return reply('Bot Not Admin...')
     bot.groupRevokeInvite(from)
     }
     reply('DONE!')
@@ -694,6 +1174,7 @@ case 'act':
        case 'add':{     			
 				if (!isGroup) return reply('this feature is only for groups')
 				if (!isGroupAdmins) return reply('Only Admins are allowed to use this Cmd')
+        if(!isBotGroupAdmins) return reply('Bot Not Admin...')
  let users = mek.quoted ? mek.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
  if (users.length == 0) return reply(`Please write the number of the person you want to add to this group`)
   await bot.groupParticipantsUpdate(from, [users], 'add').then((res) => reply(`User Added Successfully!`)).catch((err) => reply(`Cannot add that user to this group!`))
@@ -800,6 +1281,7 @@ case 'join': {
         if (!isGroup) return reply('this feature is only for groups');
 
         if (!isGroupAdmins && !mek.key.fromMe) return reply('only admin can use this feature');
+        if(!isBotGroupAdmins) return reply('Bot Not Admin...')
 
         //if (!isBotGroupAdmins) return reply("Bot not admin");
 
