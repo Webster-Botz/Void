@@ -20,7 +20,7 @@ const pino = require('pino')
 
 
 
-CFonts.say('3rinity MD', {
+CFonts.say('VOID MD BY LEX CORP©', {
 
         font: 'block',
 
@@ -46,7 +46,7 @@ readline.question(`ENTER LOGIN: `, (name) => {
 
 console.log(color('=> Bot successfully loaded! Database:', 'yellow')),
 
-console.log(color('[WEBSTER]'), color('3rinity Bot is now online!', 'yellow'))
+console.log(color('[VOID]'), color('Void Bot is now online!', 'yellow'))
 
 
 
