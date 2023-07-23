@@ -1,15 +1,15 @@
 <p align="center">
 <a href="https://github.com/Webster-Botz/-3rinity-MD">
-    <img src="https://i.imgur.com/MClOeqe.jpeg">
+    <img src="https://c.tenor.com/SOeIW-QVZvoAAAPo/scared-the-quintessential-quintuplets.mp4">
   </a>
 
-<h1 align="center"> 🧣3rinity MD
+<h1 align="center">👻Void MD
 </h1>
 
 <p align="center"> 
-<b>Konnichiwa Senpai, I am "🧣3rinity" an Opensource WhatsApp bot made by <a href="https://github.com/Webster-Botz">Lexis🧧</a> and his team "Webcore📡" to do everything that's beyond imagination with highest <b>Features</b> and <b>Stability</b> and <b>Compatibility</b> built with Baileys Multi Device support.
+<b>Konnichiwa Senpai, I am "Void Bot" an Opensource WhatsApp bot made by <a href="https://github.com/Webster-Botz">Lexis👻</a> and his team "Webcore📡" to do everything that's beyond imagination with highest <b>Features</b> and <b>Stability</b> and <b>Compatibility</b> built with Baileys Multi Device support.
 
-<h3 align="center"> 🧣3rinity MD - The Future Is Here
+<h3 align="center"> 👻VOID MD - The Future Is Here
 </h4>
 
 <br>
@@ -26,11 +26,6 @@
     <img src="https://visitor-badge.glitch.me/badge?page_id=https://github.com/FantoX001/Atlas-MD.visitor-badge&left_text=Total%20People%20Visited">
   </a>
   <br><br>
-  
-      
- 
-<h4 align="center"> Deploy on Repl.it - ( YouTube Tutorial Included & Highly Recommended )
-</h4>
 
 <p align="center" >
     <a href="https://repl.it/github/Webster-Botz/-3rinity-MD">
