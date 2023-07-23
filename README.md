@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://github.com/Webster-Botz/-3rinity-MD">
+<a href="[https://github.com/Webster-Botz/-3rinity-MD](https://github.com/Webster-Botz/Void)">
     <img src="https://c.tenor.com/SOeIW-QVZvoAAAPo/scared-the-quintessential-quintuplets.mp4">
   </a>
 
@@ -15,20 +15,14 @@
 <br>
 
 <p align="center">
-  <a href="https://github.com/Webster-Botz/-3rinity-MD/fork">
-    <img src="https://img.shields.io/github/forks/Webster-Botz/-3rinity-MD?label=Fork&style=social">
-    
-    
-
-<br>
-
-<a href="https://github.com/FantoX001/Atlas-MD">
+  <a href="https://github.com/Webster-Botz/Void/fork">
+    <img src="https://img.shields.io/github/forks/Webster-Botz/-3rinity-MD?label=Fork&stylehttps://github.com/Webster-Botz/Void">
     <img src="https://visitor-badge.glitch.me/badge?page_id=https://github.com/FantoX001/Atlas-MD.visitor-badge&left_text=Total%20People%20Visited">
   </a>
   <br><br>
 
 <p align="center" >
-    <a href="https://repl.it/github/Webster-Botz/-3rinity-MD">
+    <a href="https://repl.it/github/Webster-Botz/Void">
     <img src="https://i.ibb.co/zrB5kMh/deploy-on-repl.jpg" width="170px" alt="Deploy on Heroku" >
     </a>
     <br>     
