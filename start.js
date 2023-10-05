@@ -1,4 +1,4 @@
-const {default: makeWASocket,delay,DisconnectReason,BufferJSON, useMultiFileAuthState} = require('@adiwajshing/baileys')
+const {default: makeWASocket,delay,DisconnectReason,BufferJSON, useMultiFileAuthState} = require('@whiskeysockets/baileys')
 const  mk = require('@hapi/boom')
 const CFonts = require('cfonts')
 const { color } = require('./lib/color')
@@ -7,13 +7,9 @@ const fs = require('fs');
 const axios = require('axios')
 const bot1 = require('./void')
 const pino = require('pino')
-const {
-    Collection,
-} = require("./lib");
-const Economy = new Collection()
 
 
-CFonts.say('VOID MD BY LEX CORP©', {
+CFonts.say('Group Bot', {
         font: 'block',
         align: 'center',
         gradient: ['blue', 'magenta']
@@ -30,39 +26,10 @@ readline.question(`ENTER LOGIN: `, (name) => {
     readline.close()
 
 
-console.log(color('[VOID]'), color('Void Bot is now online!', 'yellow'))
-    console.log(color('[DEV]', 'cyan'), color('Welcome back, Owner! Hope you are doing well~', 'magenta'))
-
-
-
 async function connectToWhatsApp () {
+    
 const { state, saveCreds } = await useMultiFileAuthState(`./session/${name}.session`)
 
-const readEconomy = () => {
-    let dir = path.join(__dirname, "./economy")
-    let dirs = fs.readdirSync(dir)
-    let cmdlist = {}
-    try {
-        dirs.forEach(async (res) => {
-            let groups = res.toLowerCase()
-            Economy.category = dirs.filter(v => v !== "_").map(v => v)
-            cmdlist[groups] = []
-            let files = fs.readdirSync(`${dir}/${res}`).filter((file) => file.endsWith(".js"))
-            for (const file of files) {
-                const game = require(`${dir}/${res}/${file}`)
-                cmdlist[groups].push(game)
-                Economy.set(game.name, game)
-                delay(100)
-            }
-        })
-        Economy.list = cmdlist
-    } catch (eerror) {
-        console.error("An error occured!")
-    }
-}
-
-
-readEconomy()
 
 const bot =   makeWASocket({logger:pino({level:'silent'}),printQRInTerminal: true,auth: state})
 
@@ -77,6 +44,7 @@ if(connection === 'close') {
     }
 } else if(connection === 'open') {
     console.log(`${name} HAS BEEN SUCCESSFULLY CONNECTED TO WHATSAPP SERVER`)
+    
 }
 })
 
